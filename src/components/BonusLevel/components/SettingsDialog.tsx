@@ -34,7 +34,7 @@ const SettingsDialog: React.FC<SettingsDialogProps> = ({
 
   return (
     <Dialog>
-      <DialogTrigger>
+      <DialogTrigger asChild>
         <button className="border border-slate-500 rounded-full p-2">
           <SettingsIcon size="18" />
         </button>

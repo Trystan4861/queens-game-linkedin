@@ -18,7 +18,12 @@ const App = () => {
   return (
     <HelmetProvider>
       <ThemeProvider attribute="class" defaultTheme="light">
-        <Router>
+        <Router
+          future={{
+            v7_startTransition: true,
+            v7_relativeSplatPath: true,
+          }}
+        >
           <Routes>
             <Route path="/" element={<PageLevelSelection />} />
             <Route path="/level/:id" element={<PageGameLevel />} />

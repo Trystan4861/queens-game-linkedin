@@ -1,26 +1,47 @@
 {
-  "image": "mcr.microsoft.com/devcontainers/universal:2",
+  "image": "node:18-alpine",
+
   "hostRequirements": {
     "cpus": 4
   },
+
   "waitFor": "onCreateCommand",
-  "updateContentCommand": "npm install",
-  "postCreateCommand": "",
-  "postAttachCommand": {
-    "server": "npm start"
-  },
+
+  "updateContentCommand": "npm install && npm install --save-dev @types/react @types/react-dom",
+
+  "postCreateCommand": "sh .devcontainer/setup-shell.sh",
+
   "customizations": {
     "codespaces": {
       "openFiles": [
         "src/App.jsx"
       ]
+    },
+    "vscode": {
+      "settings": {
+        "git.path": "/usr/bin/git",
+        "git.autorefresh": true,
+        "git.enableSmartCommit": true,
+
+        "terminal.integrated.profiles.linux": {
+          "zsh": {
+            "path": "/bin/zsh"
+          }
+        },
+        "terminal.integrated.defaultProfile.linux": "zsh",
+
+        "terminal.integrated.fontFamily": "MesloLGS NF",
+        "terminal.integrated.fontSize": 13
+      }
     }
   },
+
   "portsAttributes": {
     "3000": {
       "label": "Application",
-      "onAutoForward": "openPreview"
+      "onAutoForward": "notify"
     }
   },
+
   "forwardPorts": [3000]
 }
